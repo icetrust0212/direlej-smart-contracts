@@ -3,7 +3,7 @@ import { calculate_whitelist_root } from '../whitelist/utils';
 
 const fn: DeployFunction = async function ({ deployments: { deploy }, ethers: { getSigners }, network }) {
   const deployer = (await getSigners())[0];
-  const signerAddress = "0xeA860Ae1b9aEB06b674664c5496D2F8Ee7C4BBFA";
+  const signerAddress = "0x5e6cCfBa0aB8Bf8BDEE5ABe9f6eE0BB2f274a609";
  
   const maxBatchSize_ = 5;
   const collectionSize_ = 3333;

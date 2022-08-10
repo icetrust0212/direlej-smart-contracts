@@ -26,7 +26,7 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
     string private _placeHolderURI;
 
     bool public reveal = true;
-    uint256 currentSaleAmount;
+    uint256 public currentSaleAmount;
 
     enum SalePhase {
         None,
