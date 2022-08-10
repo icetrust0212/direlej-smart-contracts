@@ -41,7 +41,7 @@ contract ERC721A is
     uint128 numberMinted;
   }
 
-  uint256 private currentIndex = 0;
+  uint256 private currentIndex = 1;
 
   uint256 internal immutable collectionSize;
   uint256 internal immutable maxBatchSize;

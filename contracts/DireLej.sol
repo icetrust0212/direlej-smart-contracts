@@ -25,7 +25,8 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
     string private _baseTokenURI;
     string private _placeHolderURI;
 
-    bool public reveal;
+    bool public reveal = true;
+    uint256 currentSaleAmount;
 
     enum SalePhase {
         None,
@@ -45,13 +46,16 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
         string memory _placeholder,
         uint256 maxBatchSize_,
         uint256 collectionSize_,
-        address signerAddress
+        address signerAddress,
+        uint256 currentSaleAmount_
     ) ERC721A("DireLej", "DRLJ", maxBatchSize_, collectionSize_) {
         _baseTokenURI = _baseURIString;
         _placeHolderURI = _placeholder;
 
         maxAmountPerWallet = maxBatchSize_;
         preSaleSigner = signerAddress;
+        require(currentSaleAmount_ <= collectionSize_, "Current Sale Amount should less than collection size.");
+        currentSaleAmount = currentSaleAmount_;
     }
 
     modifier callerIsUser() {
@@ -99,7 +103,7 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
         nonReentrant
     {
         require(
-            totalSupply() + quantity <= collectionSize,
+            totalSupply() + quantity <= currentSaleAmount,
             "reached max supply"
         );
         require(
@@ -130,7 +134,7 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
         nonReentrant
     {
         require(
-            totalSupply() + quantity <= collectionSize,
+            totalSupply() + quantity <= currentSaleAmount,
             "reached max supply"
         );
         require(
@@ -143,7 +147,7 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
 
     // For marketing etc.
     function devMint(uint256 quantity) external onlyOwner {
-        require(totalSupply() + quantity <= collectionSize, "Exceeds Max Supply");
+        require(totalSupply() + quantity <= currentSaleAmount, "Exceeds Max Supply");
         
         if (quantity > maxBatchSize) {
             require(
@@ -204,6 +208,10 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
 
     function setPreSaleSigner(address signer) external onlyOwner {
         preSaleSigner = signer;
+    }
+
+    function setCurrentSaleAmount(uint _currentSaleAmount) external onlyOwner {
+        currentSaleAmount = _currentSaleAmount;
     }
 
     // withdraw ether

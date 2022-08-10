@@ -6,8 +6,9 @@ const fn: DeployFunction = async function ({ deployments: { deploy }, ethers: { 
   const signerAddress = "0xeA860Ae1b9aEB06b674664c5496D2F8Ee7C4BBFA";
  
   const maxBatchSize_ = 5;
-  const collectionSize_ = 7777;
-  const baseTokenURI = "https://gateway.pinata.cloud/ipfs/QmchQb5AmN17JyLDMFimADLqvJ6o9iy3mJseDLQcwqxWcy/";
+  const collectionSize_ = 3333;
+  const currentSaleAmount = 333;
+  const baseTokenURI = "https://kanessanft.mypinata.cloud/ipfs/QmbEaPLaoYJzDYih3q15eMCeEdU5rCFRXsDsuM4Ki9N1DN/";
   const placeHolderURI = "";
 
   const root = calculate_whitelist_root();
@@ -21,7 +22,8 @@ const fn: DeployFunction = async function ({ deployments: { deploy }, ethers: { 
       placeHolderURI,
       maxBatchSize_,
       collectionSize_,
-      signerAddress
+      signerAddress,
+      currentSaleAmount
     ]
   });
 
