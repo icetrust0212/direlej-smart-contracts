@@ -190,7 +190,7 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
         string memory baseURI = _baseURI();
         return
             bytes(baseURI).length > 0
-                ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json"))
+                ? string(abi.encodePacked(baseURI, (tokenId + 1).toString(), ".json"))
                 : "";
     }
 
