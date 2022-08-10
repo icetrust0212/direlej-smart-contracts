@@ -41,7 +41,7 @@ contract ERC721A is
     uint128 numberMinted;
   }
 
-  uint256 private currentIndex = 1;
+  uint256 private currentIndex = 0;
 
   uint256 internal immutable collectionSize;
   uint256 internal immutable maxBatchSize;
@@ -355,7 +355,7 @@ contract ERC721A is
     uint256 quantity,
     bytes memory _data
   ) internal {
-    uint256 startTokenId = currentIndex;
+    uint256 startTokenId = currentIndex + 1;
     require(to != address(0), "ERC721A: mint to the zero address");
     // We know if the first token in the batch doesn't exist, the other ones don't as well, because of serial ordering.
     require(!_exists(startTokenId), "ERC721A: token already minted");
