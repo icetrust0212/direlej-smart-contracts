@@ -7,7 +7,7 @@ const fn: DeployFunction = async function ({ deployments: { deploy }, ethers: { 
  
   const maxBatchSize_ = 5;
   const collectionSize_ = 3333;
-  const currentSaleAmount = 333;
+  const currentSaleAmount = 500;
   const baseTokenURI = "https://kanessanft.mypinata.cloud/ipfs/QmbEaPLaoYJzDYih3q15eMCeEdU5rCFRXsDsuM4Ki9N1DN/";
   const placeHolderURI = "";
 

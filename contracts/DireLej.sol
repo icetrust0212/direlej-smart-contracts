@@ -15,8 +15,8 @@ contract DireLej is Ownable, ERC721A, ReentrancyGuard {
     uint256 public maxAmountPerWallet;
 
     // Price for presale and public sale
-    uint256 public publicSalePrice = 0.5 ether;
-    uint256 public presalePrice = 0.2 ether;
+    uint256 public publicSalePrice = 30 ether; // 30 matic
+    uint256 public presalePrice = 25 ether; // 25 matic
 
     // Signer for whitelist verification
     address private preSaleSigner;
